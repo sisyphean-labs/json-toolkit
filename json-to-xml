@@ -6,7 +6,9 @@ import xmltodict
 
 def main():
     data = json.load(sys.stdin)
-    print(xmltodict.unparse({"root": data}, pretty=True))
+    if type(data) != dict or list(data) != ["root"]:
+        raise Exception("Only an object with a single key of root can be parsed into xml")
+    print(xmltodict.unparse(data, pretty=True))
     exit(0)
 
 if __name__ == "__main__":
