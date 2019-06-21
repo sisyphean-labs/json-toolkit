@@ -55,18 +55,31 @@ json-diff takes in two json files and returns the differences between the files 
 #### Output format
 The output is a json encoded list of difference objects describing the difference between two json files.
 If the files are equivalent, the output will be an empty json array.
+##### Example
+Consider
+```
+[ 1, 2, 3 ]
+```
+and
+```
+[ 1, 2, 4 ]
+```
+Then the difference is
+```
+[{"leftValue":3,"path":[2],"rightValue":4}]
+```
+At path [2], (index 2 element in the top level array), the left value is 3, but the right value is 4
+
 ##### Difference Object
 A difference object has a required path, an optional leftValue, and an optional rightValue.
 The leftValue and rightValues are the values of the json object at the path for the left file and right files respectively.
-If there is no leftValue, this means the path does not exist for the left file, and similarly for the rightValue and right file.
+If there is no leftValue, this means the path does not exist for the left file, and similarly for the rightValue and right file. For example, if the left is an array of length 1 and the right is an array of length 2, then path [1] (index 1 element) does not exist for the left but it does for the right.
 ###### Path
 The path is the location of a particular a json value nested within a larger json value.
-In json-diff, this is encoded as a json array of integers or strings.
-This notation is similar to the path notation used by (and plagarized from) jq.
-The primary difference is our paths are arrays whereas jq uses . delimited strings
+In json-diff, this is encoded as a json array of integers for array indicies and strings for object keys.
 
 ###### Example Path
-In the object
+For:
 ```
 [
     0,
@@ -78,30 +91,11 @@ In the object
 ]
 ```
 -1 can be found at [1, "a", 0].
-This path should be read as take the second element of top level array.
-For this value, which is an object, take the value corresponding to the "a" key.
-For this value, which is an array, take the first element.
+This path should be read as take the whole array:
+Then take the index 1 element of top level array.
+Then take the value corresponding to the "a" key.
+Then take the index 0 element.
 This final value is the one found at [1, "a", 0].
-#### Examples
-##### File setup
-json-diff operates on files, so here we create a few files we can use later.
-```
-echo '[]' > empty_array.json
-cp empty_array.json other_empty_array.json
-echo '[1]' > non_empty_array.json
-```
-
-##### Comparing equivalent files
-```
-json-diff empty_array.json empty_array.json
-json-diff empty_array.json other_empty_array.json
-json-diff non_empty_array.json non_empty_array.json
-```
-
-##### Comparing different files
-```
-json-diff empty_array.json non_empty_array.json
-```
 
 ### json-empty
 #### Description
