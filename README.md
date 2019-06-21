@@ -1,6 +1,6 @@
 # JSON Toolkit
 
-A collection of CLI tools which make it easy to write pipelines processing various data files. Using these tools in conjunction with jq, you can write data processing prototypes in seconds!
+A collection of CLI tools which make it easy to write pipelines processing various data files. Using these tools in conjunction with `jq`, you can write data processing prototypes in seconds!
 
 ## Example usecases
 ### 1 to 10 in json
