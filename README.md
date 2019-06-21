@@ -44,10 +44,10 @@ test-difference.json | json-empty
 
 ## Getting Started
 
-* git clone git@github.com:tyleradams/json-toolkit.git
-* make
-* ./run-all-tests # On success this should return nothing
-* sudo make install
+* `git clone git@github.com:tyleradams/json-toolkit.git`
+* `make`
+* `./run-all-tests # On success this should return nothing`
+* `sudo make install`
 
 ## Tools
 
