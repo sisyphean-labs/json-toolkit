@@ -29,7 +29,7 @@ If the test fails, this will return exit code 1 and the test difference as JSON 
 
 ```bash
 cat test-input.json | json-post https://your-web-server/api/endpoint > actual-test-output.json
-json-diff actual-test-output.json expected-test-output.json > test-difference.json
+json-diff actual-test-output.json expected-test-output.json | json-format > test-difference.json
 test-difference.json | json-empty
 ```
 
