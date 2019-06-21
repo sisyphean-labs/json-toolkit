@@ -24,8 +24,8 @@ cat today.csv | json-to-csv | json-format > today.json
 json-diff yesterday.json today.json | json-format > difference.json
 ```
 ### Testing framework for a web endpoint
-If the test passes, this will return exit code 0 and nothing on STDOUT
-If the test fails, this will return exit code 1 and the test difference as JSON on STDOUT.
+If the test passes, this will return exit code 0 and nothing on stdout
+If the test fails, this will return exit code 1 and the test difference as JSON on stdout.
 
 ```bash
 cat test-input.json | json-post https://your-web-server/api/endpoint | json-format > actual-test-output.json
