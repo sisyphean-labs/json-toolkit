@@ -45,7 +45,7 @@ test-difference.json | json-empty
 ## Getting Started
 
 ```bash
-git clone git@github.com:tyleradams/json-toolkit.git
+git clone git@github.com:sisyphean-labs/json-toolkit.git
 make
 ./run-all-tests # On success this should return nothing
 sudo make install
