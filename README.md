@@ -28,7 +28,7 @@ If the test passes, this will return exit code 0 and nothing on STDOUT
 If the test fails, this will return exit code 1 and the test difference as JSON on STDOUT.
 
 ```bash
-cat test-input.json | json-post https://your-web-server/api/endpoint > actual-test-output.json
+cat test-input.json | json-post https://your-web-server/api/endpoint | json-format > actual-test-output.json
 json-diff actual-test-output.json expected-test-output.json | json-format > test-difference.json
 test-difference.json | json-empty
 ```
