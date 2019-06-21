@@ -72,12 +72,12 @@ Then the difference is
 ```json
 [{"leftValue":3,"path":[2],"rightValue":4}]
 ```
-At path [2], (index 2 element in the top level array), the left value is 3, but the right value is 4
+At path `[2]`, (index 2 element in the top level array), the left value is 3, but the right value is 4
 
 ##### Difference Object
 A difference object has a required path, an optional leftValue, and an optional rightValue.
 The leftValue and rightValues are the values of the json object at the path for the left file and right files respectively.
-If there is no leftValue, this means the path does not exist for the left file, and similarly for the rightValue and right file. For example, if the left is an array of length 1 and the right is an array of length 2, then path [1] (index 1 element) does not exist for the left but it does for the right.
+If there is no leftValue, this means the path does not exist for the left file, and similarly for the rightValue and right file. For example, if the left is an array of length 1 and the right is an array of length 2, then path `[1]` (index 1 element) does not exist for the left but it does for the right.
 ###### Path
 The path is the location of a particular a json value nested within a larger json value.
 In json-diff, this is encoded as a json array of integers for array indicies and strings for object keys.
@@ -94,12 +94,12 @@ For:
     }
 ]
 ```
--1 can be found at [1, "a", 0].
+-1 can be found at `[1, "a", 0]`.
 This path should be read as take the whole array:
 Then take the index 1 element of top level array.
 Then take the value corresponding to the "a" key.
 Then take the index 0 element.
-This final value is the one found at [1, "a", 0].
+This final value is the one found at `[1, "a", 0]`.
 
 ### json-empty
 #### Description
