@@ -4,7 +4,9 @@ A collection of CLI tools which make it easy to write pipelines processing vario
 
 ## Example usecases
 ### 1 to 10 in json
+```
 seq 10 | newline-to-json | jq 'map(tonumber)'
+```
 ### Select rows from a CSV where the 2nd and 3rd column are equal
 ```
 cat file.csv | csv-to-json | jq 'map(select(.[1] == .[2]))' | json-to-csv
