@@ -20,11 +20,11 @@ This is a collection of CLI tools to help manipulate json files in a UNIX-like e
 ## Tools
 
 ### json-diff
-json-diff takes in two json files as arguments and returns a list of differences between the files.
-If the json are structurally the same, the output will be an empty json array.
+json-diff takes in two json files and returns the differences between the files as json.
 
 #### Output format
 The output is a json encoded list of difference objects describing the difference between two json files.
+If the files are equivalent, the output will be an empty json array.
 ##### Difference Object
 A difference object has a required path, an optional leftValue, and an optional rightValue.
 The leftValue and rightValues are the values of the json object at the path for the left file and right files respectively.

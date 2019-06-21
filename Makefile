@@ -15,6 +15,7 @@ install : all
 	install json-diff /usr/local/bin
 	install json-empty /usr/local/bin
 	install json-format /usr/local/bin
+	install json-post /usr/local/bin
 	install json-to-csv /usr/local/bin
 	install json-to-dsv /usr/local/bin
 	install json-to-newline /usr/local/bin

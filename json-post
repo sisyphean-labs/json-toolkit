@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+import urllib
+import urllib.request
+
+def tuples_to_dict(tuples):
+    return {i[0]: i[1] for i in tuples}
+
+def make_request(url, body):
+    try:
+        response = urllib.request.urlopen(url, body)
+        response_dict = {
+        "status": response.status,
+        "body": response.read().decode("ASCII"),
+        "headers": tuples_to_dict(response.getheaders()),
+    }
+    except urllib.error.URLError as e:
+        response_dict = {
+            "status": e.code,
+            "body": e.reason,
+            "headers": tuples_to_dict(e.headers.items()),
+    }
+
+    if response_dict["status"] < 400:
+        exit_code = 0
+    else:
+        exit_code = 1
+
+    return json.dumps(response_dict), exit_code
+
+def main():
+    stdin = json.load(sys.stdin)
+    stdout, exit_code = make_request(stdin["url"], stdin["body"])
+
+    print(stdout)
+    exit(exit_code)
+
+if __name__ == "__main__":
+    main()
+
