@@ -149,10 +149,10 @@ echo '[["Multiple", "cells"], ["and"], ["multiple", "rows"]]' | json-to-dsv :
 
 ### json-to-xml
 #### Description
-json-to-xml takes json from stdin and formats the data as xml on stdout with a top level "root" tag.
+json-to-xml takes json from stdin and formats the data as xml on stdout assuming a top level "root" tag.
 #### Examples
 ```bash
-echo '{"a": "b"}' | json-to-xml
+echo '{"root": {"a": "b"}}' | json-to-xml
 ```
 
 ### json-to-yaml
