@@ -54,7 +54,7 @@ sudo make install
 ## Tools
 
 ### json-diff
-json-diff takes in two json files and returns the differences between the files as json.
+`json-diff` takes in two json files and returns the differences between the files as json.
 
 #### Output format
 The output is a json encoded list of difference objects describing the difference between two json files.
