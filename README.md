@@ -104,7 +104,7 @@ This final value is the one found at `[1, "a", 0]`.
 ### json-empty
 #### Description
 `json-empty` helps you return the right error code in bash scripts.
-* If the input is an empty json array, it returns exit code 0 and an empty stdout.
+* If the input is an empty json array, `json-empty` returns exit code 0 and an empty stdout.
 * If the input is valid json but not an empty array, `json-empty` returns exit code 1 and the returns the inputted string to stdout.
 * If the input is not valid json, `json-empty` returns exit code 2 and throws an error message to stderr.
 #### Examples
