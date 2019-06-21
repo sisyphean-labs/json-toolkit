@@ -4,21 +4,21 @@ A collection of CLI tools which make it easy to write pipelines processing vario
 
 ## Example usecases
 ### 1 to 10 in json
-```
+```bash
 seq 10 | newline-to-json | jq 'map(tonumber)'
 ```
 ### Select rows from a CSV where the 2nd and 3rd column are equal
-```
+```bash
 cat file.csv | csv-to-json | jq 'map(select(.[1] == .[2]))' | json-to-csv
 ```
 ### Extract the difference between daily XML reports.
-```
+```bash
 cat yesterday.xml | json-to-xml | json-format > yesterday.json
 cat today.xml | json-to-xml | json-format > today.json
 json-diff yesterday.json today.json | json-format > difference.json
 ```
 ### Extract the difference between daily CSV reports.
-```
+```bash
 cat yesterday.csv | json-to-csv | json-format > yesterday.json
 cat today.csv | json-to-csv | json-format > today.json
 json-diff yesterday.json today.json | json-format > difference.json
@@ -27,7 +27,7 @@ json-diff yesterday.json today.json | json-format > difference.json
 If the test passes, this will return exit code 0 and nothing on STDOUT
 If the test fails, this will return exit code 1 and the test difference as JSON on STDOUT.
 
-```
+```bash
 cat test-input.json | json-post https://your-web-server/api/endpoint > actual-test-output.json
 json-diff actual-test-output.json expected-test-output.json > test-difference.json
 test-difference.json | json-empty
@@ -61,15 +61,15 @@ The output is a json encoded list of difference objects describing the differenc
 If the files are equivalent, the output will be an empty json array.
 ##### Example
 Consider
-```
+```json
 [ 1, 2, 3 ]
 ```
 and
-```
+```json
 [ 1, 2, 4 ]
 ```
 Then the difference is
-```
+```json
 [{"leftValue":3,"path":[2],"rightValue":4}]
 ```
 At path [2], (index 2 element in the top level array), the left value is 3, but the right value is 4
@@ -84,7 +84,7 @@ In json-diff, this is encoded as a json array of integers for array indicies and
 
 ###### Example Path
 For:
-```
+```json
 [
     0,
     {
@@ -108,22 +108,22 @@ If the input is valid json but is not an empty array, json-empty returns exit co
 If the input is not valid json , json-empty returns exit code 2 and throws an error message to stderr.
 #### Examples
 ##### Passing an empty JSON array into json-empty
-```
+```bash
 echo '[]' | json-empty
 ```
 
 ##### Passing a non-empty JSON array into json-empty
-```
+```bash
 echo '[1]' | json-empty
 ```
 
 ##### Passing a JSON string into json-empty
-```
+```bash
 echo '"non-empty array input"' | json-empty
 ```
 
 ##### Passing non-JSON into json-empty
-```
+```bash
 echo 'this is not json' | json-empty
 ```
 
@@ -131,7 +131,7 @@ echo 'this is not json' | json-empty
 #### Description
 json-to-csv takes a json array of array of strings from stdin and formats the data as a csv on stdout.
 #### Examples
-```
+```bash
 echo '[["Single cell"]]' | json-to-csv
 echo '[["Multiple", "cells", "but", "one", "row"]]' | json-to-csv
 echo '[["Multiple", "cells"], ["and"], ["multiple", "rows"]]' | json-to-csv
@@ -141,7 +141,7 @@ echo '[["Multiple", "cells"], ["and"], ["multiple", "rows"]]' | json-to-csv
 #### Description
 json-to-dsv takes a json array of array of strings from stdin, and a delmiter as the first argument, and formats the data as a dsv with the specified delimiter on stdout.
 #### Examples
-```
+```bash
 echo '[["Single cell"]]' | json-to-dsv :
 echo '[["Multiple", "cells", "but", "one", "row"]]' | json-to-dsv :
 echo '[["Multiple", "cells"], ["and"], ["multiple", "rows"]]' | json-to-dsv :
@@ -151,7 +151,7 @@ echo '[["Multiple", "cells"], ["and"], ["multiple", "rows"]]' | json-to-dsv :
 #### Description
 json-to-xml takes json from stdin and formats the data as xml on stdout with a top level "root" tag.
 #### Examples
-```
+```bash
 echo '{"a": "b"}' | json-to-xml
 ```
 
@@ -159,7 +159,7 @@ echo '{"a": "b"}' | json-to-xml
 #### Description
 json-to-yaml takes json from stdin and formats the data as yaml on stdout.
 #### Examples
-```
+```bash
 echo '{"a": 1, "b": 2}' | json-to-yaml
 ```
 
@@ -167,7 +167,7 @@ echo '{"a": 1, "b": 2}' | json-to-yaml
 #### Description
 csv-to-json takes a csv from stdin and formats the data into a json array of array of strings.
 #### Examples
-```
+```bash
 echo Single cell | csv-to-json
 echo Multiple,cells,but,one,row | csv-to-json
 echo -e Multiple,cells\\nand\\nmultiple,rows | csv-to-json
@@ -177,7 +177,7 @@ echo -e Multiple,cells\\nand\\nmultiple,rows | csv-to-json
 #### Description
 dsv-to-json takes a dsv file from stdin, the delimiter as the first argument, and formats the data into a json array of array of strings.
 #### Examples
-```
+```bash
 echo Single cell | dsv-to-json :
 echo Multiple:cells:but:one:row | dsv-to-json :
 echo -e Multiple:cells\\nand\\nmultiple:rows | dsv-to-json :
@@ -187,7 +187,7 @@ echo -e Multiple:cells\\nand\\nmultiple:rows | dsv-to-json :
 #### Description
 xml-to-json takes xml from stdin and formats the data as json on stdout.
 #### Examples
-```
+```bash
 echo '<a>b</a>' | xml-to-json
 ```
 
@@ -195,6 +195,6 @@ echo '<a>b</a>' | xml-to-json
 #### Description
 yaml-to-json takes yaml from stdin and formats the data as json on stdout.
 #### Examples
-```
+```bash
 echo 'a: b' | yaml-to-json
 ```
