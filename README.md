@@ -77,7 +77,7 @@ At path `[2]`, (index 2 element in the top level array), the left value is 3, bu
 ##### Difference Object
 A difference object has a required `path`, an optional `leftValue`, and an optional `rightValue`.
 The `leftValue` and `rightValue` are the values of the json object at the path for the left file and right files respectively.
-If there is no `leftValue`, this means the path does not exist for the left file, and similarly for the rightValue and right file. For example, if the left is an array of length 1 and the right is an array of length 2, then path `[1]` (index 1 element) does not exist for the left but it does for the right.
+If there is no `leftValue`, this means the path does not exist for the left file, and similarly for the `rightValue` and right file. For example, if the left is an array of length 1 and the right is an array of length 2, then path `[1]` (index 1 element) does not exist for the left but it does for the right.
 ###### Path
 The path is the location of a particular a json value nested within a larger json value.
 In `json-diff`, this is encoded as a json array of integers for array indicies and strings for object keys.
