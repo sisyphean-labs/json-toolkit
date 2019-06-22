@@ -162,6 +162,14 @@ echo '[["Multiple", "cells", "but", "one", "row"]]' | json-to-dsv :
 echo '[["Multiple", "cells"], ["and"], ["multiple", "rows"]]' | json-to-dsv :
 ```
 
+### json-to-newline
+#### Description
+`json-to-newline` takes a json array from stdin and formats the data as newline delimited strings on stdout.
+#### Examples
+```bash
+echo '[1,2,3,4,true,"s"]' | json-to-newline
+```
+
 ### json-to-xml
 #### Description
 `json-to-xml` takes json from stdin and formats the data as xml on stdout. Only an object with a single key can be converted to xml.
