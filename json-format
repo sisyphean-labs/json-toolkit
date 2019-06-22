@@ -1,16 +1,36 @@
 #!/usr/bin/env bash
 
+usage () {
+    echo "Usage: json-format [FILE]"
+    echo ""
+    echo "Formats json file"
+    echo ""
+    echo "Example:"
+    echo "    cat file.json | json-format"
+    echo "    cat file.json | json-format -"
+    echo "    json-format file.json"
+    exit 0
+}
 while getopts "h" opt; do
     case "$opt" in
         h)
-            echo "Usage: json-format"
-            echo ""
-            echo "Formats json passed into stdin"
-            echo ""
-            echo "Example: cat file.json | json-format"
-            exit 0
-            ;;
+        usage
+        ;;
     esac
 done
 
-jq -S '.'
+if [ "$#" -eq 0 ]; then
+    jq -S '.'
+    exit 0
+elif [ "$#" -eq 1 ]; then
+    FILE="$1"
+    if [ "$FILE" == "-" ]; then
+        jq -S '.'
+    else
+        TMP_FILE="$(mktemp)"
+        jq -S '.' $FILE > $TMP_FILE
+        cp $TMP_FILE $FILE
+    fi
+else
+    usage
+fi
