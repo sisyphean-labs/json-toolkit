@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+while getopts "h" opt; do
+    case "$opt" in
+        h)
+            echo "Usage: newline-to-json"
+            echo ""
+            echo "Converts newline delimited strings to a json array of strings"
+            echo ""
+            echo "Example: cat file.json | newline-to-json"
+            exit 0
+            ;;
+    esac
+done
+
+jq --raw-input --slurp 'split("\n")' | jq '.[0:-1]'

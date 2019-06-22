@@ -21,5 +21,6 @@ install : all
 	install json-to-newline /usr/local/bin
 	install json-to-xml /usr/local/bin
 	install json-to-yaml /usr/local/bin
+	install newline-to-json /usr/local/bin
 	install xml-to-json /usr/local/bin
 	install yaml-to-json /usr/local/bin
