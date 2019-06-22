@@ -133,6 +133,15 @@ echo '"non-empty array input"' | json-empty
 echo 'this is not json' | json-empty
 ```
 
+### json-format
+#### Description
+`json-format` formats json on stdin to be pretty printed and sorts keys in objects alphabetically
+#### Example
+```bash
+echo '[1, 2, 3]' | json-format
+json-format a.json
+```
+
 ### json-to-csv
 #### Description
 `json-to-csv` takes a json array of array of strings from stdin and formats the data as a csv on stdout.
@@ -187,6 +196,14 @@ echo -e Multiple,cells\\nand\\nmultiple,rows | csv-to-json
 echo Single cell | dsv-to-json :
 echo Multiple:cells:but:one:row | dsv-to-json :
 echo -e Multiple:cells\\nand\\nmultiple:rows | dsv-to-json :
+```
+
+### newline-to-json
+#### Description
+`newline-to-json` takes newline delimited strings from stdin and formats the data as a json array  of strings on stdout.
+#### Examples
+```bash
+seq 10 | newline-to-json
 ```
 
 ### xml-to-json
