@@ -142,6 +142,14 @@ echo '[1, 2, 3]' | json-format
 json-format a.json
 ```
 
+### json-post
+#### Description
+`json-post` posts the json on stdin to the specified url
+#### Example
+```bash
+echo '[1, 2, 3]' | json-post https://httpbin.org/post
+```
+
 ### json-to-csv
 #### Description
 `json-to-csv` takes a json array of array of strings from stdin and formats the data as a csv on stdout.

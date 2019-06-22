@@ -10,8 +10,15 @@ def tuples_to_dict(tuples):
     return {i[0]: i[1] for i in tuples}
 
 def make_request(url, body):
+    request = urllib.request.Request(
+            url=url,
+            data=json.dumps(body).encode("UTF-8"),
+            headers={
+                "Content-Type": "application/json"
+            },
+            method='POST')
     try:
-        response = urllib.request.urlopen(url, body)
+        response = urllib.request.urlopen(request)
         response_dict = {
         "status": response.status,
         "body": response.read().decode("ASCII"),
