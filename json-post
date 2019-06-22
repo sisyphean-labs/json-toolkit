@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import json
 import sys
 import urllib
@@ -31,8 +32,12 @@ def make_request(url, body):
     return json.dumps(response_dict), exit_code
 
 def main():
-    stdin = json.load(sys.stdin)
-    stdout, exit_code = make_request(stdin["url"], stdin["body"])
+    parser = argparse.ArgumentParser(description="Posts the json in stdin to the URL")
+    parser.add_argument('URL', help="The url to which to post the json")
+    args = parser.parse_args()
+
+    body = json.load(sys.stdin)
+    stdout, exit_code = make_request(args.URL, body)
 
     print(stdout)
     exit(exit_code)

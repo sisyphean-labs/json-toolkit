@@ -1,3 +1,16 @@
 #!/usr/bin/env bash
 
+while getopts "h" opt; do
+    case "$opt" in
+        h)
+            echo "Usage: json-format"
+            echo ""
+            echo "Formats json passed into stdin"
+            echo ""
+            echo "Example: cat file.json | json-format"
+            exit 0
+            ;;
+    esac
+done
+
 jq -S '.'

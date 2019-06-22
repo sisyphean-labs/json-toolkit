@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
+import argparse
 import json
 import sys
 import xmltodict
 
 def main():
+    parser = argparse.ArgumentParser(description="Converts json from stdin to xml on stdout")
+    args = parser.parse_args()
+
     data = json.load(sys.stdin)
     if type(data) != dict or len(list(data)) != 1:
         raise Exception("Only an object with a single key can be converted to xml")

@@ -129,7 +129,7 @@ func compare_object(path []interface{}, object1 interface{}, object2 interface{}
 
 func main() {
 	if len(os.Args) != 3 {
-		fmt.Println("Usage:  json-diff left right")
+		fmt.Println("Usage:  json-diff LEFT RIGHT")
 		fmt.Println("")
 		fmt.Println("Computes the difference between two json files")
 		fmt.Println("")

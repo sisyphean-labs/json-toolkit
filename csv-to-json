@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
+import argparse
 import csv
 import json
 import sys
 
 def main():
+    parser = argparse.ArgumentParser(description="Converts csv from stdin to json on stdout")
+    args = parser.parse_args()
+
     csv_reader = csv.reader(sys.stdin)
     print(json.dumps(list(csv_reader)))
     exit(0)

@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 
+import argparse
 import csv
 import json
 import sys
 import yaml
 
 def main():
+    parser = argparse.ArgumentParser(description="Converts yaml from stdin to json on stdout")
+    args = parser.parse_args()
+
     print(json.dumps(yaml.load(sys.stdin)))
     exit(0)
 
