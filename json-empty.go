@@ -5,19 +5,16 @@ import "fmt"
 import "io/ioutil"
 import "encoding/json"
 
-// If the input is an empty json array.
-//   Returns exit code 0
-//   Stdout is empty
-//   Stderr is empty
-// If the input is valid json, but not an empty array
-//   Returns exit code 1
-//   Stdout is the input
-//   Stderr is empty
-// If the input is valid json, but not an empty array
-//   Returns exit code 2
-//   Stdout is empty
-//   Stderr is a go stacktrace
 func main() {
+	if len(os.Args) != 1 {
+		fmt.Println("Usage:  json-empty")
+		fmt.Println("")
+		fmt.Println("Returns whether stdin is an empty json array")
+		fmt.Println("")
+		fmt.Println("Options:")
+		fmt.Println("    -h --help Show this screen")
+		os.Exit(1)
+	}
 	bytes, _ := ioutil.ReadAll(os.Stdin)
 
 	var dat interface{}

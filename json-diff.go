@@ -7,20 +7,13 @@ import "io/ioutil"
 import "os"
 import "reflect"
 
-// panic if e is non-nil
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 // Standard mathematical min function
 func min(a int, b int) int {
 	if a < b {
 		return a
-	} else {
-		return b
 	}
+
+	return b
 }
 
 // Compares two objects and returns a list of differences relative to the json path
@@ -146,17 +139,23 @@ func main() {
 	}
 
 	file1, err := ioutil.ReadFile(os.Args[1])
-	check(err)
+    if err != nil {
+        panic(err)
+    }
 	file2, err := ioutil.ReadFile(os.Args[2])
-	check(err)
+    if err != nil {
+        panic(err)
+    }
 
 	var object1 interface{}
 	var object2 interface{}
-	err = json.Unmarshal(file1, &object1)
-	check(err)
+    if err := json.Unmarshal(file1, &object1); err != nil {
+        panic(err)
+    }
 
-	err = json.Unmarshal(file2, &object2)
-	check(err)
+    if err := json.Unmarshal(file2, &object2); err != nil {
+        panic(err)
+    }
 
 	diff := compare_object([]interface{}{}, object1, object2)
 
